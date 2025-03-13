@@ -1,0 +1,106 @@
+{% extends "/components/modals/modal_template.html" %}
+{% block modal_id %}user_add{% endblock %}
+<!-- Acá iría el nombre del usuario -->
+{% block header %} Agregar usuario {% endblock %}
+{% block cuerpo %}
+<!-- Acá iría todo el HTML correspondiente a la edición del usuario -->
+<div id="confirm-message" class="modal-body modal-scrollable">
+    <div class="col">
+        <form id="add-form" method="POST" action="{{ url_for('super.add_user') }}">
+            <div class="form-group">
+                <label for="inputEmail"> Dirección de email *</label>
+                <input required type="email" class="form-control" id="inputEmailUsr"
+                       name="inputEmail" placeholder="nombre@ejemplo.com"
+                       onblur="validateEmail('inputEmailUsr', 'emailErrorUsr'); allFieldsValid()"
+                       aria-describedby="emailErrorUsr" />
+                <small id="emailErrorUsr" class="form-text text-danger"></small>
+            </div>
+            <div class="form-group">
+                <label for="inputName"> Nombre * </label>
+                <input required type="text" class="form-control" id="inputNameUsr" name="inputName"
+                       placeholder="John" onblur="validateJustText('inputNameUsr', 'nameErrorUsr'); allFieldsValid();"
+                       aria-describedby="nameErrorUsr" />
+                <small id="nameErrorUsr" class="form-text text-danger"></small>
+            </div>
+            <div class="form-group">
+                <label for="inputSurname"> Apellido * </label>
+                <input required type="text" class="form-control" id="inputSurnameUsr"
+                       name="inputSurname" placeholder="Doe"
+                       onblur="validateJustText('inputSurnameUsr', 'surnameErrorUsr'); allFieldsValid()"
+                       aria-describedby="surnameErrorUsr" />
+                <small id="surnameErrorUsr" class="form-text text-danger"></small>
+            </div>
+            <div class="form-group">
+                <label for="inputUsername"> Nombre de usuario * </label>
+                <input required type="text" class="form-control" id="inputUsernameUsr"
+                       name="inputUsername" placeholder="johndoe"
+                       onblur="validateUsername('inputUsernameUsr', 'usernameErrorUsr'); allFieldsValid()"
+                       aria-describedby="usernameErrorUsr" />
+                <small id="usernameErrorUsr" class="form-text text-danger"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword"> Contraseña *</label>
+                <input required type="password" class="form-control" id="inputPasswordUsr"
+                       name="inputPassword"
+                       onblur="validatePassword('inputPasswordUsr', 'passwordErrorUsr'); allFieldsValid()"
+                       aria-describedby="passwordErrorUsr" />
+                <small id="passwordErrorUsr" class="form-text text-danger"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="inputDocumentType">Tipo de Documento *</label>
+                <select onblur="allFieldsValid()" required class="form-control" id="inputDocumentType" name="inputDocumentType">
+                    <option value="" disabled selected>Seleccionar un tipo de Documento</option>
+                    <option value="DNI">DNI</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inputDocument">Número de Documento *</label>
+                <input required type="text" class="form-control" id="inputDocumentUsr" name="inputDocument"
+                       placeholder="12345678"
+                       onblur="validateJustNumber('inputDocumentUsr', 'documentErrorUsr'); allFieldsValid()"
+                       aria-describedby="documentErrorUsr">
+                <small id="documentErrorUsr" class="form-text text-danger"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="inputGender">Género *</label>
+                <select onblur="allFieldsValid()" required class="form-control" id="inputGender" name="inputGender">
+                    <option value="" disabled selected>Seleccionar un Género</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="No binario">No binario</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Dirección *</label>
+                <input required type="text" class="form-control" id="inputAddressUsr" name="inputAddress"
+                       onblur="validateDireccion('inputAddressUsr', 'addressErrorUsr'); allFieldsValid()"
+                       aria-describedby="addressErrorUsr">
+                <small id="addressErrorUsr" class="form-text text-danger"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPhoneNumber">Número de teléfono *</label>
+                <input required type="text" class="form-control" id="inputPhoneNumberUsr"
+                       name="inputPhoneNumber"
+                       onblur="validatePhoneNumber('inputPhoneNumberUsr', 'phoneNumberErrorUsr'); allFieldsValid();"
+                       aria-describedby="phoneNumberErrorUsr">
+                <small id="phoneNumberErrorUsr" class="form-text text-danger"></small>
+            </div>
+
+            <button type="submit" disabled class="btn btn-primary"> Registrar Usuario
+            </button>
+
+            <button type="button" class="btn btn-secondary close-button" data-dismiss="modal">
+                Cerrar </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+
+{% endblock %}

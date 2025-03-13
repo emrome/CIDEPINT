@@ -1,0 +1,9 @@
+<div>
+        
+        <button type="button" class="btn btn-outline-primary view-button" 
+        data-url = "{{ url_for('super.edit_institution', institution_id=element['id']) }}"
+        data-element= "{{ parse_institution(element) }}" onclick="viewInstitution(this)">Ver</button>
+
+        <button type="button" onclick="deleteInstitution(this)"
+                data-element= "{{ parse_institution(element) }}" class="btn btn-outline-danger">Eliminar</button>
+</div>

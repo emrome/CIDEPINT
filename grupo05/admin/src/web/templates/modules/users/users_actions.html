@@ -1,0 +1,11 @@
+<div>
+        <button type="button" class="btn btn-outline-primary view-button" onclick="viewUser(this)" 
+                data-element="{{ parse_user(element) }}"
+                data-url="{{ url_for('super.edit_user', user_id=element['id']) }}">Ver</button>
+
+        <a href="{{ url_for('super.roles', user_id=element['id']) }}"
+           class="btn btn-outline-secondary text-decoration-none">Roles</a>
+
+        <button type="button" onclick="deleteUser(this)" data-element="{{ parse_user(element) }}"
+                class="btn btn-outline-danger">Eliminar</button>
+</div>
